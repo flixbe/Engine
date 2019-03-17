@@ -1,9 +1,12 @@
 package engine;
 
+import java.awt.event.KeyEvent;
+
 import engine.core.graphics.Color;
 import engine.core.graphics.Display;
 import engine.core.graphics.Renderer;
 import engine.core.graphics.Window;
+import engine.core.input.Keyboard;
 
 public class Main {
 
@@ -17,6 +20,7 @@ public class Main {
 		window = new Window();
 		display = new Display(window);
 		renderer = new Renderer(window.getWindowWidth(), window.getWindowHeight());
+		window.addKeyListener(new Keyboard());
 	}
 	
 	public void run() {
@@ -29,7 +33,10 @@ public class Main {
 	}
 	
 	public void update() {
-		
+		if (Keyboard.isKeyPressed(KeyEvent.VK_W) || Keyboard.isKeyPressed(KeyEvent.VK_UP)) System.out.println("UP");
+		if (Keyboard.isKeyPressed(KeyEvent.VK_D) || Keyboard.isKeyPressed(KeyEvent.VK_RIGHT)) System.out.println("RIGHT");
+		if (Keyboard.isKeyPressed(KeyEvent.VK_S) || Keyboard.isKeyPressed(KeyEvent.VK_DOWN)) System.out.println("DOWN");
+		if (Keyboard.isKeyPressed(KeyEvent.VK_A) || Keyboard.isKeyPressed(KeyEvent.VK_LEFT)) System.out.println("LEFT"); 
 	}
 	
 	public void render() {
